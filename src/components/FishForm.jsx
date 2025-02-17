@@ -5,7 +5,7 @@ function FishForm({ data, onAdd }) {
   const [newFish, setNewFish] = useState({
     id: data.length > 0 ? Math.max(...data.map((fish) => fish.id)) + 1 : 1,
     name: "",
-    type: "",
+    type: "mala",
   });
 
   const HandleChange = (e) => {
@@ -19,10 +19,12 @@ function FishForm({ data, onAdd }) {
       }
       case "type-velka": {
         updatedFish = { ...newFish, type: "velka" };
+
         break;
       }
       case "type-mala": {
         updatedFish = { ...newFish, type: "mala" };
+
         break;
       }
       default:
@@ -43,7 +45,7 @@ function FishForm({ data, onAdd }) {
     const temp = {
       id: newFish.id + 1,
       name: "",
-      type: "",
+      type: "mala",
     };
     setNewFish(temp);
     validateData(temp);
@@ -68,6 +70,7 @@ function FishForm({ data, onAdd }) {
           id="type-velka"
           value={newFish.type}
           onChange={HandleChange}
+          checked={newFish.type === "velka"}
         />
       </div>
       <div className="col-2">
@@ -77,6 +80,7 @@ function FishForm({ data, onAdd }) {
           type="radio"
           id="type-mala"
           value={newFish.type}
+          checked={newFish.type === "mala"}
           onChange={HandleChange}
         />
       </div>
